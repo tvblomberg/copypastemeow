@@ -3,6 +3,8 @@ import { IClipItem } from "../Models/clipitem";
 
 let mockRepo: IClipItem[] = [];
 
+const getAllAsync = async (): Promise<IClipItem[]> => mockRepo;
+
 const getByIdAsync = async (id: string): Promise<IClipItem> =>
     mockRepo.find((x) => x.id == id);
 
@@ -22,6 +24,7 @@ const removeAsync = async (id: string): Promise<void> => {
 };
 
 export default {
+    getAllAsync,
     getByIdAsync,
     createAsync,
     removeAsync,
