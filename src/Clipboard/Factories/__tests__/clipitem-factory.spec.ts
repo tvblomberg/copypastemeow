@@ -1,8 +1,8 @@
 import ClipItemFactory from "../clipitem-factory";
 import { v4 as guid } from "uuid";
 
-describe("ClipItem Factory", () => {
-    it("Create ClipItem should generate Id", () => {
+describe("ClipItem Factory: Create Clip Item", () => {
+    it("Valid arguments should create ClipItem", () => {
         const expectedIdentityId = guid();
         const expectedValue = "SOME VALUE";
 
@@ -16,5 +16,35 @@ describe("ClipItem Factory", () => {
             identityId: expectedIdentityId,
             value: expectedValue,
         });
+    });
+
+    it("Empty value should return error", () => {
+        const expectedIdentityId = guid();
+        const expectedValue = "    ";
+
+        expect(() => ClipItemFactory.create(
+            expectedIdentityId,
+            expectedValue
+        )).toThrow();
+    });
+
+
+    it("Undefined value should return error", () => {
+        const expectedIdentityId = guid();
+
+        expect(() => ClipItemFactory.create(
+            expectedIdentityId,
+            undefined
+        )).toThrow();
+    });
+
+    it("Invalid id should return error", () => {
+        const expectedIdentityId = "BAD";
+        const expectedValue = "value";
+
+        expect(() => ClipItemFactory.create(
+            expectedIdentityId,
+            expectedValue
+        )).toThrow();
     });
 });
