@@ -1,0 +1,10 @@
+{
+  "name": "copypastemeow",
+  "version": "0.0.1",
+  "description": "Sync clipboard across all devices",
+  "main": "index.js",
+  "repository": "git@github.com:tvblomberg/copypastemeow.git",
+  "author": "Thomas V. Blomberg <thomas.v.blomberg@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
