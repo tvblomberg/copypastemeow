@@ -1,9 +1,24 @@
 import clipitemFactory from "../Factories/clipitem-factory";
+import * as moment from "moment";
 import { IClipItem } from "../Models/clipitem";
 
 let mockRepo: IClipItem[] = [];
 
-const getAllAsync = async (): Promise<IClipItem[]> => mockRepo;
+const getAsync = async (
+    fromDt: Date,
+    throughDate: Date,
+    limit: number
+): Promise<IClipItem[]> =>
+    mockRepo
+        .filter((x) =>
+            moment(x.creationDate).isBetween(
+                moment(fromDt),
+                moment(throughDate),
+                "days",
+                "[]"
+            )
+        )
+        .filter((x, index) => index < limit);
 
 const getByIdAsync = async (id: string): Promise<IClipItem> =>
     mockRepo.find((x) => x.id == id);
@@ -24,7 +39,7 @@ const removeAsync = async (id: string): Promise<void> => {
 };
 
 export default {
-    getAllAsync,
+    getAllAsync: getAsync,
     getByIdAsync,
     createAsync,
     removeAsync,

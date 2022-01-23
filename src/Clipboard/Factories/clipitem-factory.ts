@@ -25,6 +25,7 @@ const create = (identityId: string, value: string): IClipItem => {
         id: guid(),
         identityId,
         value,
+        creationDate: new Date()
     };
 };
 

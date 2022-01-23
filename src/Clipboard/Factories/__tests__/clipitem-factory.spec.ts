@@ -15,6 +15,7 @@ describe("ClipItem Factory: Create Clip Item", () => {
             id: expect.any(String),
             identityId: expectedIdentityId,
             value: expectedValue,
+            creationDate: expect.any(Date)
         });
     });
 
